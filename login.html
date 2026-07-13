@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroDash Pro | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <i class="fas fa-plane-departure auth-logo"></i>
+                <h1>AeroDash Pro</h1>
+                <p>Sistema de Gestión Aeroportuaria</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchTab('login')">Iniciar Sesión</button>
+                <button class="auth-tab" onclick="switchTab('register')">Registrarse</button>
+            </div>
+
+            <div class="auth-form-wrapper">
+                <div id="loginForm" class="auth-form active">
+                    <form id="loginFormElement">
+                        <div class="input-group">
+                            <label><i class="fas fa-envelope"></i> Correo electrónico</label>
+                            <input type="email" id="loginEmail" placeholder="ejemplo@aerodash.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label><i class="fas fa-lock"></i> Contraseña</label>
+                            <input type="password" id="loginPassword" placeholder="••••••" required>
+                        </div>
+                        <button type="submit" class="btn-primary btn-block">Iniciar Sesión</button>
+                        <div id="loginMessage" class="message"></div>
+                    </form>
+                    <div class="auth-footer">
+                        <p>👑 Cuenta de administrador:</p>
+                        <div class="demo-buttons">
+                            <button class="demo-btn admin-btn" onclick="fillDemo('admin@aerodash.com', 'admin123')">👑 Admin</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="registerForm" class="auth-form">
+                    <form id="registerFormElement">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-user"></i> Nombre</label>
+                                <input type="text" id="regNombre" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-user"></i> Apellido</label>
+                                <input type="text" id="regApellido" placeholder="Tu apellido" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label><i class="fas fa-envelope"></i> Correo electrónico</label>
+                            <input type="email" id="regEmail" placeholder="ejemplo@aerodash.com" required>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label><i class="fas fa-id-card"></i> Documento</label>
+                                <input type="text" id="regDocumento" placeholder="Opcional">
+                            </div>
+                            <div class="input-group">
+                                <label><i class="fas fa-phone"></i> Teléfono</label>
+                                <input type="tel" id="regTelefono" placeholder="Opcional">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label><i class="fas fa-lock"></i> Contraseña</label>
+                            <input type="password" id="regPassword" placeholder="Mínimo 4 caracteres" required>
+                        </div>
+                        <div class="input-group">
+                            <label><i class="fas fa-check-circle"></i> Confirmar contraseña</label>
+                            <input type="password" id="regConfirmPassword" placeholder="Repite tu contraseña" required>
+                        </div>
+                        <button type="submit" class="btn-primary btn-block">Crear cuenta gratuita</button>
+                        <div id="registerMessage" class="message"></div>
+                    </form>
+                    <div class="auth-switch">
+                        ¿Ya tienes cuenta? <a onclick="switchTab('login')">Inicia sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

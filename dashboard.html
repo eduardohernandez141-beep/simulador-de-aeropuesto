@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroDash Pro | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-plane-departure"></i>
+            <span>AeroDash Pro</span>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="nav-link active"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="flights.html" class="nav-link"><i class="fas fa-search"></i> Explorar Vuelos</a>
+            <a href="my-bookings.html" class="nav-link"><i class="fas fa-ticket-alt"></i> Mis Reservas</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Mi Perfil</a>
+            <a href="admin/admin-dashboard.html" class="nav-link admin-link" id="adminNavLink" style="display:none;"><i class="fas fa-crown"></i> Admin</a>
+        </div>
+        <div class="nav-user">
+            <i class="fas fa-user-circle"></i>
+            <span id="userNameNav"></span>
+            <button onclick="logout()" class="logout-icon"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="welcome-banner">
+            <div>
+                <h1>Bienvenido de vuelta, <span id="welcomeName"></span> ✈️</h1>
+                <p id="welcomeRole" style="opacity:0.8;font-size:0.9rem;"></p>
+            </div>
+            <div class="date-badge">
+                <i class="far fa-calendar-alt"></i>
+                <span id="currentDateDashboard"></span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue"><i class="fas fa-plane"></i></div>
+                <div class="stat-info">
+                    <h3>Vuelos Totales</h3>
+                    <div class="stat-value" id="totalFlights">0</div>
+                    <small>en el sistema</small>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green"><i class="fas fa-ticket-alt"></i></div>
+                <div class="stat-info">
+                    <h3>Mis Tickets</h3>
+                    <div class="stat-value" id="myTicketsCount">0</div>
+                    <small>reservas activas</small>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple"><i class="fas fa-dollar-sign"></i></div>
+                <div class="stat-info">
+                    <h3>Total Gastado</h3>
+                    <div class="stat-value" id="totalSpent">$0</div>
+                    <small>en vuelos</small>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange"><i class="fas fa-calendar-check"></i></div>
+                <div class="stat-info">
+                    <h3>Próximos Vuelos</h3>
+                    <div class="stat-value" id="upcomingFlights">0</div>
+                    <small>en los próximos días</small>
+                </div>
+            </div>
+        </div>
+
+        <div id="adminQuickActions" class="admin-quick-actions" style="display:none;">
+            <h3><i class="fas fa-crown"></i> Panel de Administración Rápido</h3>
+            <div class="quick-actions-grid">
+                <a href="admin/manage-flights.html" class="quick-action-card">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Crear Vuelo</span>
+                </a>
+                <a href="admin/manage-flights.html" class="quick-action-card">
+                    <i class="fas fa-edit"></i>
+                    <span>Gestionar Vuelos</span>
+                </a>
+                <a href="admin/manage-users.html" class="quick-action-card">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Gestionar Usuarios</span>
+                </a>
+                <a href="admin/admin-dashboard.html" class="quick-action-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Ver Estadísticas</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-clock"></i> Próximos Vuelos</h2>
+                <a href="flights.html" class="view-all">Ver todos →</a>
+            </div>
+            <div class="flights-grid" id="upcomingFlightsList"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Mis Últimas Reservas</h2>
+                <a href="my-bookings.html" class="view-all">Ver todas →</a>
+            </div>
+            <div id="recentBookings" class="bookings-list"></div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-star"></i> Vuelos Destacados</h2>
+            </div>
+            <div class="flights-grid" id="featuredFlights"></div>
+        </div>
+    </main>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reservar Vuelo</h2>
+                <button class="close-modal" onclick="closeBookingModal()">&times;</button>
+            </div>
+            <div id="modalFlightInfo"></div>
+            <div class="form-group">
+                <label>Selecciona tu asiento</label>
+                <div class="seat-scroll-container">
+                    <div id="seatSelector" class="seat-grid"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Método de pago</label>
+                <select id="paymentMethod" class="filter-input">
+                    <option value="Tarjeta de Crédito">💳 Tarjeta de Crédito</option>
+                    <option value="Tarjeta de Débito">💳 Tarjeta de Débito</option>
+                    <option value="PayPal">💰 PayPal</option>
+                    <option value="Transferencia">🏦 Transferencia Bancaria</option>
+                </select>
+            </div>
+            <button id="confirmBookingBtn" class="btn-primary btn-block" onclick="confirmBooking()">Confirmar Reserva</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/flights.js"></script>
+    <script src="js/bookings.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

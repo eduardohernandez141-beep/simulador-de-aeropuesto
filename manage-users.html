@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroDash Pro | Gestionar Usuarios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-plane-departure"></i>
+            <span>AeroDash Pro</span>
+        </div>
+        <div class="nav-links">
+            <a href="../dashboard.html" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="../flights.html" class="nav-link"><i class="fas fa-search"></i> Explorar Vuelos</a>
+            <a href="../my-bookings.html" class="nav-link"><i class="fas fa-ticket-alt"></i> Mis Reservas</a>
+            <a href="../profile.html" class="nav-link"><i class="fas fa-user"></i> Mi Perfil</a>
+            <a href="admin-dashboard.html" class="nav-link active admin-link"><i class="fas fa-crown"></i> Admin</a>
+        </div>
+        <div class="nav-user">
+            <i class="fas fa-user-circle"></i>
+            <span id="userNameNav"></span>
+            <button onclick="logout()" class="logout-icon"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1><i class="fas fa-users"></i> Gestionar Usuarios</h1>
+            <p>Administra los usuarios registrados en el sistema</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> Lista de Usuarios</h2>
+                <span id="adminUsersCount" class="results-badge"></span>
+            </div>
+            <div id="adminUsersList" class="users-list"></div>
+        </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/flights.js"></script>
+    <script src="../js/bookings.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

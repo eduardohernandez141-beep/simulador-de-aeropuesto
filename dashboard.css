@@ -1,0 +1,199 @@
+.welcome-banner {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 32px;
+    padding: 40px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.welcome-banner h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.date-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 12px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    font-size: 0.9rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.stat-icon.blue { background: #dbeafe; color: #2563eb; }
+.stat-icon.green { background: #dcfce7; color: #16a34a; }
+.stat-icon.purple { background: #f3e8ff; color: #9333ea; }
+.stat-icon.orange { background: #ffedd5; color: #ea580c; }
+
+.stat-info h3 {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.stat-info small {
+    color: #94a3b8;
+    font-size: 0.7rem;
+}
+
+.admin-quick-actions {
+    background: white;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 40px;
+    border: 2px solid #fbbf24;
+}
+
+.admin-quick-actions h3 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 16px;
+    color: #1e293b;
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.quick-action-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #1e293b;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.quick-action-card:hover {
+    border-color: #667eea;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.quick-action-card i {
+    font-size: 2rem;
+    color: #667eea;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.quick-action-card span {
+    font-weight: 600;
+}
+
+.bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-left: 5px solid #667eea;
+    transition: all 0.2s;
+}
+
+.booking-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.booking-info h4 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.booking-info p {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-view {
+    background: #f1f5f9;
+    color: #64748b;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-view:hover {
+    background: #667eea;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .welcome-banner { padding: 24px; }
+    .welcome-banner h1 { font-size: 1.3rem; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-card { padding: 16px; }
+    .stat-value { font-size: 1.5rem; }
+    .quick-actions-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .quick-actions-grid { grid-template-columns: 1fr; }
+}

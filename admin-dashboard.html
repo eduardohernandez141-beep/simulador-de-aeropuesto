@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroDash Pro | Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-plane-departure"></i>
+            <span>AeroDash Pro</span>
+        </div>
+        <div class="nav-links">
+            <a href="../dashboard.html" class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="../flights.html" class="nav-link"><i class="fas fa-search"></i> Explorar Vuelos</a>
+            <a href="../my-bookings.html" class="nav-link"><i class="fas fa-ticket-alt"></i> Mis Reservas</a>
+            <a href="../profile.html" class="nav-link"><i class="fas fa-user"></i> Mi Perfil</a>
+            <a href="admin-dashboard.html" class="nav-link active admin-link"><i class="fas fa-crown"></i> Admin</a>
+        </div>
+        <div class="nav-user">
+            <i class="fas fa-user-circle"></i>
+            <span id="userNameNav"></span>
+            <button onclick="logout()" class="logout-icon"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1><i class="fas fa-crown"></i> Panel de Administración</h1>
+            <p>Gestiona vuelos, usuarios y estadísticas del sistema</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon blue"><i class="fas fa-plane"></i></div>
+                <div class="stat-info">
+                    <h3>Total Vuelos</h3>
+                    <div class="stat-value" id="adminTotalFlights">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green"><i class="fas fa-users"></i></div>
+                <div class="stat-info">
+                    <h3>Total Usuarios</h3>
+                    <div class="stat-value" id="adminTotalUsers">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple"><i class="fas fa-ticket-alt"></i></div>
+                <div class="stat-info">
+                    <h3>Total Reservas</h3>
+                    <div class="stat-value" id="adminTotalBookings">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange"><i class="fas fa-dollar-sign"></i></div>
+                <div class="stat-info">
+                    <h3>Ingresos Totales</h3>
+                    <div class="stat-value" id="adminTotalRevenue">$0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-actions-grid">
+            <a href="manage-flights.html" class="admin-action-card">
+                <i class="fas fa-plane"></i>
+                <h3>Gestionar Vuelos</h3>
+                <p>Crear, editar o eliminar vuelos</p>
+            </a>
+            <a href="manage-users.html" class="admin-action-card">
+                <i class="fas fa-users-cog"></i>
+                <h3>Gestionar Usuarios</h3>
+                <p>Ver y administrar usuarios</p>
+            </a>
+            <a href="#" class="admin-action-card" onclick="generateReport()">
+                <i class="fas fa-file-alt"></i>
+                <h3>Generar Reporte</h3>
+                <p>Exportar estadísticas del sistema</p>
+            </a>
+            <a href="#" class="admin-action-card" onclick="clearAllData()">
+                <i class="fas fa-trash-alt"></i>
+                <h3>Limpiar Datos</h3>
+                <p>Reiniciar el sistema (con confirmación)</p>
+            </a>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Logs de Actividad</h2>
+            </div>
+            <div id="activityLogs" class="activity-logs"></div>
+        </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/flights.js"></script>
+    <script src="../js/bookings.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
